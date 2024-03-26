@@ -1,0 +1,17 @@
+<form  method="GET">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Search</button>
+</form>
+
+{% if to_dos %}
+
+    {% for to_do in to_dos %}
+
+    <a href="{% url "view_to_do" to_do.id %}"><h1>{{ to_do.to_do }}</h1></a>
+
+    {% endfor %}
+    
+    <h3>{{ to_do.count }}</h3>
+
+{% endif %}

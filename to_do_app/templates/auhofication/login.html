@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <style>
+        /* CSS стили */
+        .to-do-list {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 0 auto;
+            width: 300px;
+            text-align: center;
+            margin-top: 200px; 
+            }
+
+        .to-do-list input[type="text"],
+        .to-do-list input[type="password"],
+        .to-do-list button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: none;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .to-do-list button {
+            background-color: #4caf50;
+            color: white;
+            cursor: pointer;
+        }
+
+        .to-do-list button:hover {
+            background-color: #45a049;
+        }
+
+        .to-do-list input[type="text"]:focus,
+        .to-do-list input[type="password"]:focus {
+            outline: none;
+            border: 2px solid #4caf50;
+        }
+
+        .to-do-list .placeholder {
+            color: #aaa;
+        }
+        body{
+            background-color: lightblue;
+        }
+        a{
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: #45a049;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="to-do-list">
+    <form method="post" action="">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="username">
+        <input type="password" name="password" placeholder="password">
+        <button type="submit">Login</button>
+        <h1></h1>
+        <a href="{% url "register" %}">Sign Up</a>
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4682B4;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        footer {
+            background-color: #4682B4;
+            color: #fff;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px 0;
+        }
+        footer ul {
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+        }
+        footer ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+        footer ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .todo-item {
+            background-color: #fff;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
+        .user-info img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .todo-item form button {
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .todo-item form button:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>To-Do List</h1>
+</header>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Ваш CSS стиль остается без изменений */
+    </style>
+</head>
+<body>
+
+
+
+{% for i in to_do %}
+    <div class="todo-item">
+        <div class="user-info">
+            {% if i.user_profile.profile_photo %}
+                <img src="{{ i.user_profile.profile_photo.url }}" alt="Profile Photo">
+            {% else %}
+                <img src="https://www.pphfoundation.ca/wp-content/uploads/2018/05/default-avatar.png" alt="Default Profile Photo">
+            {% endif %}
+            <h2>{{ i.user }}</h2>
+        </div>
+        <h1>{{ i.to_do }}</h1>
+        <form action="{% url "to_do_delete" i.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Delete</button>
+        </form>
+    </div>
+{% endfor %}
+
+<footer>
+    <ul>
+        <li><a href="{% url "user_profile" %}"><i class="fas fa-user"></i> Profile</a></li>
+        <li><a href="{% url "todo_uploud" %}"><i class="fa-sharp fa-solid fa-plus"></i>Add To Do</a></li>
+    </ul>
+</footer>
+
+</body>
+</html>
+

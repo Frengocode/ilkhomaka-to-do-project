@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Form</title>
+    <style>
+        /* CSS стили */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            padding: 20px;
+        }
+
+        .to-do-list {
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 0 auto;
+            max-width: 400px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .to-do-list input[type="text"],
+        .to-do-list input[type="password"],
+        .to-do-list button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .to-do-list button {
+            background-color: #4caf50;
+            color: white;
+            cursor: pointer;
+        }
+
+        .to-do-list button:hover {
+            background-color: #45a049;
+        }
+
+        .to-do-list input[type="text"]:focus,
+        .to-do-list input[type="password"]:focus {
+            outline: none;
+            border: 2px solid #4caf50;
+        }
+
+        .to-do-list .placeholder {
+            color: #aaa;
+        }
+
+        .to-do-list .form-links {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .to-do-list .form-links a {
+            color: #45a049;
+            text-decoration: none;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="to-do-list">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Sign up</button>
+        <div class="form-links">
+            <a href="{% url 'login' %}">Sign in</a>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

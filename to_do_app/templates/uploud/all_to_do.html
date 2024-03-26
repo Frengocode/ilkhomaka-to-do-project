@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List Style</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .todo-item {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .todo-item h1 {
+            margin-top: 0;
+        }
+
+        .todo-item p {
+            margin: 5px 0;
+        }
+
+        .todo-item form {
+            display: inline-block;
+        }
+
+        .todo-item form button {
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .todo-item form button:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+
+{% for do in to_do %}
+    <div class="todo-item">
+        <h1>{{ do.to_do }}</h1>
+        <p>Было создано в {{ do.created_at }}</p>
+        <p>Напоминание в {{ do.reminder_time }}</p>
+        <form action="{% url 'to_do_delete' do.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Удалить заметку</button>
+        </form>
+    </div>
+{% endfor %}
+
+</body>
+</html>

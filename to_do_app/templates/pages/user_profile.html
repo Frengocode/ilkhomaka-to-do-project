@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+            margin: 0 auto;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4682B4;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        footer {
+            background-color: #4682B4;
+            color: #fff;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px 0;
+        }
+        footer ul {
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+        }
+        footer ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+        footer ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ user.username }}</h1>
+        {% if user.profile_photo %}
+                <img src="{{ user.profile_photo.url }}" alt="Profile Photo">
+            {% else %}
+                <img src="https://node.deso.org/api/v0/get-single-profile-picture/BC1YLgTsBaq9veGPYadfjSjwEHMkYX4wCjTTQ8Rs88BvrrfDvSCgjr8?fallback=https://bitclout.com/assets/img/default_profile_pic.png" alt="">
+        {% endif %}
+    </div>
+</body>
+</html>
+
+<footer>
+    <ul>
+        <li><a href="{% url "user_profile" %}"><i class="fas fa-user"></i> Profile</a></li>
+        <li><a href="{% url "todo_uploud" %}"><i class="fa-sharp fa-solid fa-plus"></i>Add To Do</a></li>
+        <li><a href="{% url  "settings" %}"><i class="fa-sharp fa-solid fa-gear"></i>Settings</a></li>
+    </ul>
+</footer>
